@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿里云中国大陆 - 专业云服务咨询</title>
+    <meta name="description" content="阿里云中国大陆版云服务 - 专业咨询、技术支持、专属优惠">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #E60012;
+            --secondary: #333333;
+            --light: #F5F5F5;
+            --white: #FFFFFF;
+            --gray: #666666;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: var(--secondary);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #FF416C 100%);
+            color: var(--white);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .benefits-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .benefit-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .pricing-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--primary);
+        }
+
+        .pricing-card.featured::before {
+            content: '推荐';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--light);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #c4000f;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">☁️ 阿里云中国大陆</div>
+            <ul class="nav-links">
+                <li><a href="#services">服务</a></li>
+                <li><a href="#benefits">优势</a></li>
+                <li><a href="#pricing">价格</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>阿里云中国大陆版</h1>
+        <p>专业跨境云解决方案 · 一对一技术支持 · 人民币支付</p>
+        <div class="cta-buttons">
+            <a href="https://www.aliyun.com/minisite/goods?userCode=gq9ucd0b" 
+               class="btn btn-primary" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                🎁 注册享优惠 →
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+                💬 免费咨询
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-title">
+            <h2>我们的服务</h2>
+            <p>提供全方位的阿里云技术支持与咨询服务</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>云服务咨询</h3>
+                <p>根据您的业务需求，推荐最适合的云服务器配置，避免资源浪费，节省成本。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>技术搭建</h3>
+                <p>从 0 到 1 帮您搭建完整的云架构，包括服务器、数据库、CDN、存储等全套服务。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>跨境方案</h3>
+                <p>专为跨境业务设计，解决网络延迟、数据合规、支付接入等痛点问题。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛡️</div>
+                <h3>安全加固</h3>
+                <p>提供云安全配置、DDoS 防护、数据备份等安全服务，保障业务稳定运行。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💰</div>
+                <h3>成本优化</h3>
+                <p>通过专属推荐码注册享额外优惠，并提供持续的成本优化建议。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📞</div>
+                <h3>运维支持</h3>
+                <p>7x24 小时技术支持，快速响应问题，确保您的业务持续稳定运行。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
+        <div class="section-title">
+            <h2>为什么选择我们</h2>
+            <p>专业服务，让您省心省力</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <span class="benefit-number">5+</span>
+                <p>年云服务经验</p>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-number">100+</span>
+                <p>成功项目案例</p>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-number">24h</span>
+                <p>快速响应支持</p>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-number">30%</span>
+                <p>平均成本节省</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="section-title">
+            <h2>服务价格 (人民币)</h2>
+            <p>透明定价，无隐藏费用</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>基础咨询</h3>
+                <div class="price">¥500<span>/次</span></div>
+                <ul class="pricing-features">
+                    <li>1 小时在线咨询</li>
+                    <li>云配置方案建议</li>
+                    <li>成本估算报告</li>
+                    <li>推荐码优惠指导</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary">立即咨询</a>
+            </div>
+            <div class="pricing-card featured">
+                <h3>技术搭建</h3>
+                <div class="price">¥2000<span>/项目</span></div>
+                <ul class="pricing-features">
+                    <li>完整云架构设计</li>
+                    <li>服务器部署配置</li>
+                    <li>数据库搭建优化</li>
+                    <li>CDN 加速配置</li>
+                    <li>安全策略配置</li>
+                    <li>7 天技术支持</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary">立即开始</a>
+            </div>
+            <div class="pricing-card">
+                <h3>运维托管</h3>
+                <div class="price">¥500<span>/月</span></div>
+                <ul class="pricing-features">
+                    <li>7x24 小时监控</li>
+                    <li>定期备份管理</li>
+                    <li>性能优化建议</li>
+                    <li>紧急故障处理</li>
+                    <li>月度报告</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary">了解详情</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-title">
+            <h2>免费咨询</h2>
+            <p>留下您的需求，我们将在 24 小时内联系您</p>
+        </div>
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="name">姓名 *</label>
+                <input type="text" id="name" name="name" required placeholder="您的姓名">
+            </div>
+            <div class="form-group">
+                <label for="email">邮箱 *</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+                <label for="wechat">微信 (可选)</label>
+                <input type="text" id="wechat" name="wechat" placeholder="您的微信号">
+            </div>
+            <div class="form-group">
+                <label for="service">感兴趣的服务 *</label>
+                <select id="service" name="service" required style="width: 100%; padding: 0.75rem; border: 2px solid #F5F5F5; border-radius: 8px; font-size: 1rem;">
+                    <option value="">请选择服务</option>
+                    <option value="consulting">基础咨询 (¥500/次)</option>
+                    <option value="setup">技术搭建 (¥2000/项目)</option>
+                    <option value="maintenance">运维托管 (¥500/月)</option>
+                    <option value="custom">其他定制需求</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">需求描述 *</label>
+                <textarea id="message" name="message" required placeholder="请描述您的具体需求，例如：需要搭建跨境电商网站、需要云服务器配置建议等..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">提交咨询</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://www.aliyun.com/minisite/goods?userCode=gq9ucd0b" target="_blank" rel="noopener noreferrer">
+                阿里云中国大陆
+            </a>
+            <a href="../">切换区域</a>
+            <a href="#services">服务介绍</a>
+            <a href="#pricing">价格说明</a>
+            <a href="#contact">联系我们</a>
+        </div>
+        <p>© 2026 阿里云云服务咨询 · 专业跨境云解决方案</p>
+        <p style="margin-top: 1rem; opacity: 0.7; font-size: 0.9rem;">
+            推荐使用专属链接注册享额外优惠：
+            <a href="https://www.aliyun.com/minisite/goods?userCode=gq9ucd0b" 
+               style="color: #E60012;" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                https://www.aliyun.com/minisite/goods?userCode=gq9ucd0b
+            </a>
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // For now, show success message
+            // In production, you would send this to a backend
+            alert('感谢您的咨询！我们将在 24 小时内通过邮箱与您联系。');
+            this.reset();
+            
+            // Log to console for debugging
+            console.log('Form submitted:', data);
+        });
+
+        // Add scroll animation to nav
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+            } else {
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>

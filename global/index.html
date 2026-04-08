@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alibaba Cloud International - Professional Cloud Services</title>
+    <meta name="description" content="Alibaba Cloud International - Professional consulting, technical support, and exclusive discounts for global users">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6A00;
+            --secondary: #333333;
+            --light: #F5F5F5;
+            --white: #FFFFFF;
+            --gray: #666666;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--secondary);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #FF8C00 100%);
+            color: var(--white);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .benefits-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .benefit-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .pricing-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--primary);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Recommended';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--light);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #e55e00;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">☁️ Alibaba Cloud Global</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Alibaba Cloud International</h1>
+        <p>Professional Cloud Solutions · Expert Support · USD Pricing</p>
+        <div class="cta-buttons">
+            <a href="https://www.alibabacloud.com/campaign/benefits?referral_code=A92VJ2" 
+               class="btn btn-primary" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                🎁 Get Started →
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+                💬 Free Consultation
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>Comprehensive Alibaba Cloud technical support and consulting</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>Cloud Consulting</h3>
+                <p>Recommend optimal cloud server configuration based on your business needs, avoid resource waste and save costs.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Technical Setup</h3>
+                <p>Help you build complete cloud architecture from scratch, including servers, databases, CDN, storage and more.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Cross-Border Solutions</h3>
+                <p>Designed for cross-border business, solving pain points like network latency, data compliance, and payment integration.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛡️</div>
+                <h3>Security Hardening</h3>
+                <p>Provide cloud security configuration, DDoS protection, data backup and other security services.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💰</div>
+                <h3>Cost Optimization</h3>
+                <p>Get exclusive discounts through referral code registration and receive ongoing cost optimization advice.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📞</div>
+                <h3>Operations Support</h3>
+                <p>7x24 technical support with rapid response to ensure your business runs continuously and stably.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
+        <div class="section-title">
+            <h2>Why Choose Us</h2>
+            <p>Professional service for your peace of mind</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <span class="benefit-number">5+</span>
+                <p>Years Cloud Experience</p>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-number">100+</span>
+                <p>Successful Projects</p>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-number">24h</span>
+                <p>Fast Response Support</p>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-number">30%</span>
+                <p>Average Cost Savings</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="section-title">
+            <h2>Pricing (USD)</h2>
+            <p>Transparent pricing, no hidden fees</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Basic Consulting</h3>
+                <div class="price">$80<span>/session</span></div>
+                <ul class="pricing-features">
+                    <li>1-hour consultation</li>
+                    <li>Cloud configuration advice</li>
+                    <li>Cost estimation report</li>
+                    <li>Referral code guidance</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary">Get Started</a>
+            </div>
+            <div class="pricing-card featured">
+                <h3>Technical Setup</h3>
+                <div class="price">$300<span>/project</span></div>
+                <ul class="pricing-features">
+                    <li>Complete cloud architecture design</li>
+                    <li>Server deployment & configuration</li>
+                    <li>Database setup & optimization</li>
+                    <li>CDN acceleration setup</li>
+                    <li>Security policy configuration</li>
+                    <li>7-day technical support</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary">Start Now</a>
+            </div>
+            <div class="pricing-card">
+                <h3>Operations Managed</h3>
+                <div class="price">$80<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>7x24 monitoring</li>
+                    <li>Regular backup management</li>
+                    <li>Performance optimization</li>
+                    <li>Emergency troubleshooting</li>
+                    <li>Monthly reports</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-title">
+            <h2>Free Consultation</h2>
+            <p>Leave your requirements, we'll contact you within 24 hours</p>
+        </div>
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+                <label for="company">Company (Optional)</label>
+                <input type="text" id="company" name="company" placeholder="Your company">
+            </div>
+            <div class="form-group">
+                <label for="service">Service Interest *</label>
+                <select id="service" name="service" required style="width: 100%; padding: 0.75rem; border: 2px solid #F5F5F5; border-radius: 8px; font-size: 1rem;">
+                    <option value="">Select service</option>
+                    <option value="consulting">Basic Consulting ($80/session)</option>
+                    <option value="setup">Technical Setup ($300/project)</option>
+                    <option value="maintenance">Operations Managed ($80/month)</option>
+                    <option value="custom">Custom Requirements</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Requirements *</label>
+                <textarea id="message" name="message" required placeholder="Please describe your specific requirements, e.g., need to build cross-border e-commerce website, need cloud server configuration advice, etc..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Inquiry</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://www.alibabacloud.com/campaign/benefits?referral_code=A92VJ2" target="_blank" rel="noopener noreferrer">
+                Alibaba Cloud International
+            </a>
+            <a href="../">Switch Region</a>
+            <a href="#services">Services</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p>© 2026 Alibaba Cloud Services · Professional Cloud Solutions</p>
+        <p style="margin-top: 1rem; opacity: 0.7; font-size: 0.9rem;">
+            Register with referral link for exclusive discounts:
+            <a href="https://www.alibabacloud.com/campaign/benefits?referral_code=A92VJ2" 
+               style="color: #FF6A00;" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                https://www.alibabacloud.com/campaign/benefits?referral_code=A92VJ2
+            </a>
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // For now, show success message
+            // In production, you would send this to a backend
+            alert('Thank you for your inquiry! We will contact you via email within 24 hours.');
+            this.reset();
+            
+            // Log to console for debugging
+            console.log('Form submitted:', data);
+        });
+
+        // Add scroll animation to nav
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+            } else {
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>

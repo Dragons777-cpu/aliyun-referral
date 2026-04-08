@@ -1,6 +1,7 @@
-# 阿里云推荐计划展示网站
+# 阿里云推荐计划展示网站 - 双版本
 
-🌐 **专属推荐链接:** https://www.alibabacloud.com/campaign/benefits?referral_code=A92VJ2
+🌐 **中国大陆:** https://www.aliyun.com/minisite/goods?userCode=gq9ucd0b  
+🌍 **国际市场:** https://www.alibabacloud.com/campaign/benefits?referral_code=A92VJ2
 
 ---
 
@@ -8,9 +9,12 @@
 
 ```
 aliyun-referral/
-├── index.html          # 主页面（单页 Landing Page）
-├── README.md           # 说明文档
-└── assets/             # (可选) 图片等资源
+├── index.html          # 主页面（区域选择入口）
+├── cn/
+│   └── index.html      # 中国大陆版本 (人民币/中文)
+├── global/
+│   └── index.html      # 国际版本 (美元/英文)
+└── README.md           # 说明文档
 ```
 
 ---
