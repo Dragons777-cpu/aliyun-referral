@@ -39,7 +39,7 @@
 
         .header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             color: var(--white);
         }
 
@@ -53,6 +53,84 @@
             font-size: 1.25rem;
             opacity: 0.9;
             animation: fadeInDown 0.8s ease 0.2s both;
+        }
+
+        /* Promotions Banner */
+        .promotions {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 1000px;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        .promotions h3 {
+            color: #1A1A1A;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .promo-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .promo-item:hover {
+            border-color: #1A1A1A;
+            transform: translateY(-3px);
+        }
+
+        .promo-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .promo-title {
+            font-weight: 600;
+            color: #1A1A1A;
+            margin-bottom: 0.25rem;
+        }
+
+        .promo-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .countdown {
+            background: rgba(26, 26, 26, 0.9);
+            color: #FFD700;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: 600;
         }
 
         .region-selector {
@@ -263,6 +341,40 @@
             <p>根据您的所在地选择合适的服务区域</p>
         </div>
 
+        <!-- Promotions Banner -->
+        <div class="promotions">
+            <h3>
+                🎉 限时优惠活动
+                <span class="countdown" id="countdown">仅剩 7 天</span>
+            </h3>
+            <p style="color: #1A1A1A; opacity: 0.9; margin-bottom: 1rem;">
+                新用户注册专享 · 最高可享 30% 折扣 · 免费试用多种云产品
+            </p>
+            
+            <div class="promo-grid">
+                <div class="promo-item">
+                    <span class="promo-icon">🎁</span>
+                    <div class="promo-title">新用户礼包</div>
+                    <div class="promo-desc">最高 $1000 抵扣券</div>
+                </div>
+                <div class="promo-item">
+                    <span class="promo-icon">💰</span>
+                    <div class="promo-title">首购折扣</div>
+                    <div class="promo-desc">低至 1.5 折起</div>
+                </div>
+                <div class="promo-item">
+                    <span class="promo-icon">🆓</span>
+                    <div class="promo-title">免费试用</div>
+                    <div class="promo-desc">50+ 产品免费用</div>
+                </div>
+                <div class="promo-item">
+                    <span class="promo-icon">🎯</span>
+                    <div class="promo-title">专属优惠</div>
+                    <div class="promo-desc">通过我们注册额外 5%</div>
+                </div>
+            </div>
+        </div>
+
         <!-- Region Selector -->
         <div class="region-selector">
             <!-- China Version -->
@@ -395,6 +507,34 @@
                     });
                 }
             });
+        });
+
+        // Countdown timer for promotions
+        document.addEventListener('DOMContentLoaded', function() {
+            const countdownEl = document.getElementById('countdown');
+            if (countdownEl) {
+                // Set end date to 7 days from now
+                const endDate = new Date();
+                endDate.setDate(endDate.getDate() + 7);
+                
+                function updateCountdown() {
+                    const now = new Date().getTime();
+                    const distance = endDate - now;
+                    
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    
+                    if (distance < 0) {
+                        countdownEl.textContent = '活动进行中';
+                        return;
+                    }
+                    
+                    countdownEl.textContent = `仅剩 ${days}天 ${hours}小时`;
+                }
+                
+                updateCountdown();
+                setInterval(updateCountdown, 1000 * 60 * 60); // Update hourly
+            }
         });
     </script>
 </body>
